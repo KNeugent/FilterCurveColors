@@ -11,7 +11,7 @@ This code has been tested using `python 3.7.3` and `numpy 1.18.2`.
 
 Currently the program works for SDSS `ugriz` filters and the `ugriz` filter curves are included in the repro. However, any filter curve can be used as long as the first column is wavelength (Angstrom) and the second column is the sensitivity. More filter curves can be found [here](http://svo2.cab.inta-csic.es/svo/theory/fps3/index.php).
 
-A test spectrum is included (`RSGBinaryModel.txt`), but again, any spectrum can be used as long as the first column contains the wavelength (Angstrom) and the second contains the flux.
+A test spectrum is included (`RSG_binary_model.txt`), but again, any spectrum can be used as long as the first column contains the wavelength (Angstrom) and the second contains the flux.
 
 ## Outputs
 
