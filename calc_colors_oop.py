@@ -1,4 +1,7 @@
 import numpy as np
+import unittest
+
+# create Filter, Magnitude, and Spectrum objects
 
 
 class Filter:
@@ -24,8 +27,16 @@ class Magnitude:
         self.zero_point = zero_point
 
     # Instance methods for value and zero point
+    # These currently aren't used in the code, but
+    # are more for OOP practice
     def description(self):
         return f"the magnitude is {self.value} and the zero point is {self.zero_point}"
+
+    def set_value(self, value):
+        self.value = value
+
+    def set_zero_point(self, zero_point):
+        self.zero_point = zero_point
 
 
 class Spectrum:
@@ -96,7 +107,19 @@ def calc_color(Magnitude1, Magnitude2):
     return color
 
 
+# unit test for the "calc_color" method
+class TestCalcColor(unittest.TestCase):
+    def runTest(self):
+        test1_Magnitude = Magnitude(20, 10)
+        test2_Magnitude = Magnitude(10, 5)
+        test_color = calc_color(test1_Magnitude, test2_Magnitude)
+        self.assertEqual(test_color, 5, "incorrect color")
+
+
 def main():
+    # for unittesting:
+    # unittest.main()
+
     # read in filter curves
     b_filt = np.loadtxt("b.dat")
     v_filt = np.loadtxt("v.dat")
