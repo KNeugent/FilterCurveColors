@@ -40,36 +40,29 @@ def filt_val(filt, spectrum):
 def main():
 
     # read in filter curves
-    u_filt = np.loadtxt("u.dat")
-    g_filt = np.loadtxt("g.dat")
+    b_filt = np.loadtxt("b.dat")
+    v_filt = np.loadtxt("v.dat")
     r_filt = np.loadtxt("r.dat")
-    i_filt = np.loadtxt("i.dat")
-    z_filt = np.loadtxt("z.dat")
 
     # model or observed spectrum
     # [wavelength,flux]
     spectrum = np.loadtxt('RSG_binary_model.txt')
 
     # filter values
-    u_filt_val,u_filt_val_zero = filt_val(u_filt,spectrum)
-    g_filt_val,g_filt_val_zero = filt_val(g_filt,spectrum)
+    b_filt_val,b_filt_val_zero = filt_val(b_filt,spectrum)
+    v_filt_val,v_filt_val_zero = filt_val(v_filt,spectrum)
     r_filt_val,r_filt_val_zero = filt_val(r_filt,spectrum)
-    i_filt_val,i_filt_val_zero = filt_val(i_filt,spectrum)
-    z_filt_val,z_filt_val_zero = filt_val(z_filt,spectrum)
 
     # colors
-    ug = (u_filt_val - g_filt_val) - (u_filt_val_zero - g_filt_val_zero)
-    gr = (g_filt_val - r_filt_val) - (g_filt_val_zero - r_filt_val_zero)
-    iz = (i_filt_val - z_filt_val) - (i_filt_val_zero - z_filt_val_zero)
+    bv = (b_filt_val - v_filt_val) - (b_filt_val_zero - v_filt_val_zero)
+    vr = (v_filt_val - r_filt_val) - (v_filt_val_zero - r_filt_val_zero)
 
     # magnitudes
-    u = u_filt_val - u_filt_val_zero
-    g = g_filt_val - g_filt_val_zero
+    b = b_filt_val - b_filt_val_zero
+    v = v_filt_val - v_filt_val_zero
     r = r_filt_val - r_filt_val_zero
-    i = i_filt_val - i_filt_val_zero
-    z = z_filt_val - z_filt_val_zero
 
-    print(" u-g:",round(ug,2),"\n g-r:",round(gr,2),"\n i-z:",round(iz,2))
+    print(" b-v:",round(bv,2),"\n v-r:",round(vr,2))
 
 if __name__ == "__main__":
     main()
